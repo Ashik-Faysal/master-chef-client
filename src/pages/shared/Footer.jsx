@@ -3,9 +3,11 @@ import { Container } from 'react-bootstrap';
 
 const Footer = () => {
     return (
-        <Container>
-            <small className='text-center'>Thios is footer</small>
-        </Container>
+      <Container>
+        <p className="text-center">
+          <small>This is Footer</small>
+        </p>
+      </Container>
     );
 };
 
