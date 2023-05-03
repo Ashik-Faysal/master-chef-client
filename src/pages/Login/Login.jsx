@@ -1,9 +1,11 @@
 
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
+  const [error, setError] = useState(null);
+
   const { signIn, signInWithGoogle } = useContext(AuthContext);
   console.log(signIn);
   const handleLogin = (event) => {
@@ -13,11 +15,17 @@ const Login = () => {
     const password = form.password.value;
     console.log(email, password);
 
+      if (password.length < 6) {
+        setError("Password must be at least 6 characters long.");
+        return;
+      }
+
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
         form.reset();
+        setError('')
       })
       .catch((error) => console.log(error));
   };
@@ -78,6 +86,8 @@ const Login = () => {
               Sign in with Google
             </button>
           </form>
+          {error && <p className="text-red-500">{error}</p>}
+
           <span className="p-5">
             New to this Website?
             <Link to="/register" className="label-text-alt link link-hover">
