@@ -1,9 +1,10 @@
+
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
   console.log(signIn);
   const handleLogin = (event) => {
     event.preventDefault();
@@ -60,6 +61,22 @@ const Login = () => {
             <div className="form-control mt-6">
               <button className="btn btn-primary">Login</button>
             </div>
+
+            <button
+              type="button"
+              onClick={signInWithGoogle}
+              className="btn btn-outline btn-accent mt-2"
+            >
+              {" "}
+              <img
+                className="mx-2"
+                src="https://developers.google.com/identity/images/g-logo.png"
+                alt="Google logo"
+                width="20px"
+                height="20px"
+              />
+              Sign in with Google
+            </button>
           </form>
           <span className="p-5">
             New to this Website?
