@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Category from './Category';
 
 const Categories = () => {
     const [categories, setCategories] = useState([]);
@@ -10,15 +11,10 @@ const Categories = () => {
     },[])
     return (
       <div>
-        <h1>Food Category List</h1>
+        <h1 className='text-5xl text-so'>Recipes Jones</h1>
 
-        <div className=''>
-          {categories.map((category) => (
-            <div className='my-4 p-2 ' key={category.id}>
-              <h1>{category.country}</h1>
-              <img src={category.food_image} />
-            </div>
-          ))}
+        <div className='grid md:grid-cols-3 gap-8'>
+          {categories.map((category) => <Category key={category.id} category={category} />)}
         </div>
       </div>
     );

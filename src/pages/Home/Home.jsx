@@ -29,7 +29,7 @@ const Home = () => {
                 creating delicious and healthy meals at home.
               </p>
               <button className="btn btn-primary">
-                <Link to="/">Get Start</Link>
+                <Link to="/categories">Get Start</Link>
               </button>
             </div>
           </div>

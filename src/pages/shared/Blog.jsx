@@ -12,8 +12,8 @@ const Blog = () => {
       <div>
         {blogs.map((blog) => (
           <div className="card border p-4 my-4 bg-slate-600" key={blog.id}>
-                <p>{blog.id}. &nbsp;{blog.question}</p>
-            <p>{blog.answer}</p>
+                <p className='font-bold'>{blog.id}. &nbsp;{blog.question}</p>
+            <p className='font-semibold'>Answer:{blog.answer}</p>
           </div>
         ))}
       </div>

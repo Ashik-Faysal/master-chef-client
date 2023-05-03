@@ -6,6 +6,8 @@ import Register from "../pages/Login/Register";
 import Terms from "../pages/Login/Terms/Terms";
 import Categories from "../pages/shared/Categories";
 import Blog from "../pages/shared/Blog";
+import ShowDetails from "../pages/shared/ShowDetails";
+
 
 const router = createBrowserRouter([
   {
@@ -31,11 +33,17 @@ const router = createBrowserRouter([
       {
         path: "/categories",
         element: <Categories />,
+        children: [
+          {
+            path: ":id",
+            element:<ShowDetails />,
+          },
+        ],
       },
       {
         path: "/blog",
-        element:<Blog/>
-      }
+        element: <Blog />,
+      },
     ],
   },
 ]);
