@@ -1,31 +1,34 @@
-import React, { useState } from "react";
+import { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Register = () => {
+  const [accepted, setAccepted] = useState(false);
 
-     const [accepted, setAccepted] = useState(false);
+  // const {createUser}= useContext(AuthContext)
+  const handleRegister = (event) => {
+  event.preventDefault();
+  const from = event.target;
+  const name = from.name.value;
+  const photo = from.photo.value;
+  const email = from.email.value;
+  const password = from.password.value;
+    console.log(name, photo, email, password);
+    // createUser(email, password)
+    //   .then(result => {
+    //     const addUser = result.user;
+    //     console.log(addUser)
+    //   })
+    // .catch(error=>console.log(error));
 
-     const handleRegister = (event) => {
-       event.preventDefault();
-       const from = event.target;
-       const name = from.name.value;
-       const photo = from.photo.value;
-       const email = from.email.value;
-       const password = from.password.value;
-       console.log(name, photo, email, password);
-       createUser(email, password)
-         .then((result) => {
-           const createdUser = result.user;
-           console.log(createdUser);
-         })
-         .catch((error) => console.log(error));
-     };
-     const handleAccepted = (event) => {
-       setAccepted(event.target.checked);
-     };
+};
+const handleAccepted = (event) => {
+  setAccepted(event.target.checked);
+};
+
   return (
-    <Container className="w-25 mx-auto">
+    <Container className="w-25 mx-auto  card shadow-lg">
       <Form onSubmit={handleRegister}>
         <Form.Group className="mb-3">
           <Form.Label>Name</Form.Label>
@@ -54,7 +57,6 @@ const Register = () => {
             required
           />
         </Form.Group>
-
         <Form.Group className="mb-3">
           <Form.Label>Password</Form.Label>
           <Form.Control

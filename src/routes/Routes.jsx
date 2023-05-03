@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Login/Register";
 import Terms from "../pages/Login/Terms/Terms";
+import Categories from "../pages/shared/Categories";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/terms",
         element: <Terms />,
+      },
+      {
+        path: "/categories",
+        element: <Categories />,
       },
     ],
   },

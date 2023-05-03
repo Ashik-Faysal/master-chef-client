@@ -1,11 +1,30 @@
 import React from "react";
+import { useContext } from "react";
 import { Button, Container, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { useState } from "react";
 
 const Login = () => {
+
+  const handleSignIn = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    form.reset();
+    signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate(from);
+      })
+      .catch((error) => console.log(error));
+  };
   return (
-    <Container className="w-25 mx-auto">
-      <Form >
+    <Container className="w-25 mx-auto card shadow-lg">
+      <Form onSubmit={handleSignIn}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
