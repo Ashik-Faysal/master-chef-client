@@ -1,57 +1,56 @@
-import React from "react";
-// import logo from "../../../assets/logo.png";
-import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 const Header = () => {
-    // const { user, logout } = useContext(AuthContext);
-    // const handleLogOut = () => {
-    //   logout()
-    //     .then()
-    //     .catch((error) => console.log(error));
-    // };
+
+  // const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+
   return (
-    <Container>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Container>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav>
-              <Nav.Link>
-                <h1>Master Chef</h1>
-              </Nav.Link>
-            </Nav>
-            <Nav className="mx-auto">
-              <Link to="/">Home</Link>
-              <Link to="/categories">Food Categories</Link>
-              <Nav.Link href="#pricing">Career</Nav.Link>
-            </Nav>
-
-            <Nav>
-              <Link to="/login">
-                  <Button variant="secondary">Login</Button>
-                </Link>
-            </Nav>
-            {/*<Nav>
-              {user && (
-                <FaUserCircle
-                  style={{ fontSize: "2em", color: "white" }}
-                ></FaUserCircle>
-              )}
-
-              {user ? (
-                <Button /*onClick={handleLogOut} variant="secondary">
-                  LogOut
-                </Button>
-              ) : (
-                <Link to="/login">
-                  <Button variant="secondary">Login</Button>
-                </Link>
-              )}
-            </Nav>*/}
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </Container>
+    <div>
+      <div className="navbar bg-base-300 flex justify-between">
+        <a className="btn btn-ghost normal-case text-xl">Master Chef</a>
+        <div>
+          <Link className="btn btn-ghost normal-case text-xl" to="/">
+            Home
+          </Link>
+          <Link className="btn btn-ghost normal-case text-xl" to="/categories">
+            Categories
+          </Link>
+          <Link className="btn btn-ghost normal-case text-xl" to="login">
+            Login
+          </Link>
+          <Link className="btn btn-ghost normal-case text-xl" to="register">
+            Register
+          </Link>
+        </div>
+        <div>
+          {/* {user ? ( */}
+          <>
+            {/* <span className="btn btn-ghost">{user.email}</span> */}
+            <button onClick={handleLogOut} className="btn btn-warning">
+              Sign Out
+            </button>
+          </>
+          {/* ) : ( */}
+          <Link to="/login">
+            <button className="btn btn-warning">Sign In</button>
+          </Link>
+          {/* )} */}
+        </div>
+      </div>
+    </div>
+    //   <nav>
+    //     <Link to="/home">Home</Link>
+    //     <Link to="/login">Login</Link>
+    //     <Link to="/register">Register</Link>
+    //     <Link to="/categories">Categories</Link>
+    //     <Link to="/blog">Blog</Link>
+    //  </nav>
   );
 };
 

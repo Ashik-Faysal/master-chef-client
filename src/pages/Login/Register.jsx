@@ -1,94 +1,98 @@
-import { useContext, useState } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Register = () => {
-  const [accepted, setAccepted] = useState(false);
+  const { user, createUser } = useContext(AuthContext);
+    console.log(createUser);
 
-  // const {createUser}= useContext(AuthContext)
   const handleRegister = (event) => {
-  event.preventDefault();
-  const from = event.target;
-  const name = from.name.value;
-  const photo = from.photo.value;
-  const email = from.email.value;
-  const password = from.password.value;
-    console.log(name, photo, email, password);
-    // createUser(email, password)
-    //   .then(result => {
-    //     const addUser = result.user;
-    //     console.log(addUser)
-    //   })
-    // .catch(error=>console.log(error));
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name, email, password);
 
-};
-const handleAccepted = (event) => {
-  setAccepted(event.target.checked);
-};
-
+    createUser(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        form.reset();
+      })
+      .catch((error) => console.log(error));
+  };
   return (
-    <Container className="w-25 mx-auto  card shadow-lg">
-      <Form onSubmit={handleRegister}>
-        <Form.Group className="mb-3">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            type="text"
-            name="name"
-            placeholder="Enter name"
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Photo Url</Form.Label>
-          <Form.Control
-            type="text"
-            name="photo"
-            placeholder="Photo URL"
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            name="email"
-            placeholder="Enter email"
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            name="password"
-            placeholder="Password"
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Check
-            onClick={handleAccepted}
-            type="checkbox"
-            name="accept"
-            label={
-              <>
-                Accept <Link to="/terms">Terms and Condition</Link>
-              </>
-            }
-          />
-        </Form.Group>
-        <Button disabled={!accepted} variant="primary" type="submit">
-          Register
-        </Button>
-        <br />
-        <Form.Text className="text-secondary">
-          Already Have an Account? <Link to="/login">Login</Link>
-        </Form.Text>
-        <Form.Text className="text-danger"></Form.Text>
-        <Form.Text className="text-success"></Form.Text>
-      </Form>
-    </Container>
+    <div className="hero min-h-screen bg-base-200">
+      <div className="hero-content flex-col ">
+        <div className="text-center lg:text-left">
+          <h1 className="text-5xl font-bold">Please Register !</h1>
+        </div>
+        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <form onSubmit={handleRegister} className="card-body">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="name"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Email</span>
+              </label>
+              <input
+                type="email"
+                name="email"
+                placeholder="email"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Photo Url</span>
+              </label>
+              <input
+                type="text"
+                name="photo"
+                placeholder="photo url"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Password</span>
+              </label>
+              <input
+                type="password"
+                placeholder="password"
+                name="password"
+                className="input input-bordered"
+                required
+              />
+              <label className="label">
+                <Link
+                  to="/login"
+                  className="p-1 label-text-alt link link-hover"
+                >
+                  Have Already an Account? Please Login
+                </Link>
+              </label>
+            </div>
+            <div className="form-control mt-6">
+              <button className="btn btn-primary">Register</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 };
 

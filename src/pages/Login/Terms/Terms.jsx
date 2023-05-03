@@ -1,10 +1,9 @@
 import React from "react";
-import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Terms = () => {
   return (
-    <Container>
+    <div>
       <h2>Terms and Condition</h2>
       <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non sint sed
@@ -14,7 +13,7 @@ const Terms = () => {
       <p>
         Go back To <Link to="/register">Register</Link>
       </p>
-    </Container>
+    </div>
   );
 };
 

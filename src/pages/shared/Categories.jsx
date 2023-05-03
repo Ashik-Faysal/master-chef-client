@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Container, Image } from 'react-bootstrap';
 
 const Categories = () => {
     const [categories, setCategories] = useState([]);
@@ -10,18 +9,18 @@ const Categories = () => {
           .catch((err) => console.error(err));
     },[])
     return (
-      <Container>
+      <div>
         <h1>Food Category List</h1>
 
-        <div className='w-25'>
+        <div className=''>
           {categories.map((category) => (
-            <Card className='my-4 p-2 ' key={category.id}>
+            <div className='my-4 p-2 ' key={category.id}>
               <h1>{category.country}</h1>
-              <Image src={category.food_image} rounded />
-            </Card>
+              <img src={category.food_image} />
+            </div>
           ))}
         </div>
-      </Container>
+      </div>
     );
 };
 
