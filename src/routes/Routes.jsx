@@ -7,12 +7,13 @@ import Terms from "../pages/Login/Terms/Terms";
 import Categories from "../pages/shared/Categories";
 import Blog from "../pages/shared/Blog";
 import ShowDetails from "../pages/shared/ShowDetails";
-
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: ":id",
-            element:<ShowDetails />,
+            element: <ShowDetails />,
           },
         ],
       },
