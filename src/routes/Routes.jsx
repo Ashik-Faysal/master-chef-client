@@ -8,6 +8,7 @@ import Categories from "../pages/shared/Categories";
 import Blog from "../pages/shared/Blog";
 import ShowDetails from "../pages/shared/ShowDetails";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import Foods from "../pages/Home/Foods";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog />,
+      },
+      {
+        path: "/foods",
+        element: <Foods />,
       },
     ],
   },
