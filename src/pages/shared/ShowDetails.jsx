@@ -23,13 +23,13 @@ const ShowDetails = () => {
   };
 
   return (
-    <div>
+    <div className="p-4">
       <h1 className="text-5xl font-bold text-center text-stone-500 my-4 py-4">
         Chef Details
       </h1>
 
       <div>
-        <div className="flex gap-6">
+        <div className="md:flex gap-6">
           <img className="w-[30]" src={details.picture} alt="" />
           <div className="w-[70]">
             <h3 className="text-4xl text-center my-4">{details.name}</h3>

@@ -15,7 +15,7 @@ export const AuthContext = createContext(null);
 const auth = getAuth(app);
 
 const AuthProviders = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState('');
 
   const [loading, setLoading] = useState(true);
 
@@ -38,12 +38,14 @@ const AuthProviders = ({ children }) => {
     const gitHubProvider = new GithubAuthProvider();
     return signInWithPopup(auth, gitHubProvider);
   }
-
   const logOut = () => {
     setLoading(true);
     return signOut(auth);
   };
 
+  const upDateProfile = (name, photoURL) => {
+    return upDateProfile(auth,{displayName: name, photoURL: photoURL})
+  }
   // Observe state change
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -55,6 +57,7 @@ const AuthProviders = ({ children }) => {
       unsubscribe();
     };
   }, []);
+  
 
   const authInfo = {
     user,
@@ -64,6 +67,7 @@ const AuthProviders = ({ children }) => {
     logOut,
     signInWithGoogle,
     signWithGithub,
+    upDateProfile
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

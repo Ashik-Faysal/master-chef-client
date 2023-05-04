@@ -55,7 +55,7 @@ const Header = () => {
         <div className="md:ml-4">
           {user ? (
             <>
-              <span className="btn btn-ghost">{user.email}</span>
+              <img src={user.photoURL} alt="" />
               <button
                 onClick={handleLogOut}
                 className="btn btn-warning ml-4 md:ml-0 mt-4 md:mt-0"

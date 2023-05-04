@@ -6,7 +6,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 const Login = () => {
   const [error, setError] = useState(null);
 
-  const { signIn, signInWithGoogle, signWithGithub } = useContext(AuthContext);
+  const { signIn, signInWithGoogle, signWithGithub ,upDateProfile} = useContext(AuthContext);
   console.log(signInWithGoogle);
     const navigate = useNavigate();
     const location = useLocation();
@@ -26,6 +26,7 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
+        upDateProfile(email,photoURL)
         console.log(loggedUser);
         form.reset();
         setError('')
