@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const location = useLocation();
 
   const handleLogOut = () => {
     logOut()
@@ -35,13 +36,17 @@ const Header = () => {
         <div className="text-sm md:flex-grow">
           <Link
             to="/"
-            className="block mt-4 md:inline-block md:mt-0 btn btn-ghost normal-case text-xl md:text-base mr-4"
+            className={`block mt-4 md:inline-block md:mt-0 btn btn-ghost normal-case text-xl md:text-base mr-4 ${
+              location.pathname === "/" ? "active" : ""
+            }`}
           >
             Home
           </Link>
           <Link
             to="/blog"
-            className="block mt-4 md:inline-block md:mt-0 btn btn-ghost normal-case text-xl md:text-base"
+            className={`block mt-4 md:inline-block md:mt-0 btn btn-ghost normal-case text-xl md:text-base ${
+              location.pathname === "/blog" ? "active" : ""
+            }`}
           >
             Blog
           </Link>
