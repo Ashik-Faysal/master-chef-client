@@ -15,7 +15,7 @@ const Home = () => {
         <div className="hero-overlay bg-opacity-40"></div>
         <div className="hero-content text-center text-neutral-content">
           <div>
-            <img
+            <img className="hidden md:block"
               src="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGZvb2R8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
               alt=""
             />
