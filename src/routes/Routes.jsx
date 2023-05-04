@@ -3,7 +3,6 @@ import Main from "../layouts/Main";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Login/Register";
-import Terms from "../pages/Login/Terms/Terms";
 import Categories from "../pages/shared/Categories";
 import Blog from "../pages/shared/Blog";
 import ShowDetails from "../pages/shared/ShowDetails";
@@ -29,10 +28,6 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
-      },
-      {
-        path: "/terms",
-        element: <Terms />,
       },
       {
         path: "/categories",

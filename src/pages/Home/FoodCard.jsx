@@ -3,8 +3,8 @@ import React from "react";
 const FoodCard = ({ food }) => {
   const { title, image, description } = food;
   return (
-    <div className="">
-      <div className="card w-96 bg-base-100 shadow-xl hover:bg-slate-500 hover:text-rose-200">
+    <div className="px-4">
+      <div className="card w-full md:w-1/2 lg:w-1/3 bg-base-100 shadow-xl hover:bg-slate-500 hover:text-rose-200">
         <figure>
           <img src={image} alt="" />
         </figure>

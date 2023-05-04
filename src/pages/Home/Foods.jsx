@@ -10,7 +10,7 @@ const Foods = () => {
       .catch((err) => console.error(err));
   }, []);
   return (
-    <div>
+    <div className="px-2 mx-2">
       <h1 className="text-5xl font-extrabold text-center text-stone-500">
         Our Section
       </h1>
