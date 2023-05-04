@@ -36,13 +36,12 @@ const router = createBrowserRouter([
       {
         path: "/categories",
         element: <Categories />,
-        children: [
-          {
-            path: ":id",
-            element: <ShowDetails />,
-          },
-        ],
       },
+      {
+        path: "/categories/:id",
+        element: <ShowDetails />,
+      },
+
       {
         path: "/blog",
         element: <Blog />,

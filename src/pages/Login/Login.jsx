@@ -6,8 +6,8 @@ import { AuthContext } from "../../Providers/AuthProvider";
 const Login = () => {
   const [error, setError] = useState(null);
 
-  const { signIn, signInWithGoogle } = useContext(AuthContext);
-  console.log(signIn);
+  const { signIn, signInWithGoogle, signWithGithub } = useContext(AuthContext);
+  console.log(signInWithGoogle);
     const navigate = useNavigate();
     const location = useLocation();
     console.log("login page location", location);
@@ -74,21 +74,37 @@ const Login = () => {
               <button className="btn btn-primary">Login</button>
             </div>
 
-            <button
-              type="button"
-              onClick={signInWithGoogle}
-              className="btn btn-outline btn-accent mt-2"
-            >
-              {" "}
-              <img
-                className="mx-2"
-                src="https://developers.google.com/identity/images/g-logo.png"
-                alt="Google logo"
-                width="20px"
-                height="20px"
-              />
-              Sign in with Google
-            </button>
+            <div className="flex gap-4 mx-auto">
+              <button
+                type="button"
+                onClick={signInWithGoogle}
+                className="btn btn-outline btn-accent mt-2"
+              >
+                {" "}
+                <img
+                  className="mx-2"
+                  src="https://developers.google.com/identity/images/g-logo.png"
+                  alt="Google logo"
+                  width="20px"
+                  height="20px"
+                />
+                {/* Sign in with Google */}
+              </button>
+              <button
+                type="button"
+                onClick={signWithGithub}
+                className="btn btn-outline btn-accent mt-2"
+              >
+                <img
+                  className="mx-2"
+                  src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                  alt="Github logo"
+                  width="20px"
+                  height="20px"
+                />
+                {/* Sign in with Github */}
+              </button>
+            </div>
           </form>
           {error && <p className="text-red-500">{error}</p>}
 

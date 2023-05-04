@@ -1,21 +1,70 @@
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-
+import React, { useEffect, useState } from "react";
+import { BiHeart, BiLike } from "react-icons/bi";
+import { AiFillEye } from "react-icons/ai";
+import { useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ShowDetails = () => {
-    const { id } = useParams();
-    useEffect(() => {
-        fetch(`https://master-chef-server-ashik-faysal.vercel.app/categories/${id}`)
-            .then(res => res.json())
-            .then(data => console.log(data))
-        .catch(err => console.error(err));
-    },[])
-    console.log(categories);
-    return (
-        <div>
-            <h1>This is show details page</h1>
+  const { id } = useParams();
+  const [details, setDetails] = useState([]);
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    fetch(`https://master-chef-server-ashik-faysal.vercel.app/categories/${id}`)
+      .then((res) => res.json())
+      .then((data) => setDetails(data))
+      .catch((err) => console.error(err));
+  }, []);
+
+  const handleFavorite = () => {
+    setIsFavorite(true);
+    toast.success("Chef added to favorites!");
+  };
+
+  return (
+    <div>
+      <h1 className="text-5xl font-bold text-center text-stone-500 my-4 py-4">
+        Chef Details
+      </h1>
+
+      <div>
+        <div className="flex gap-6">
+          <img className="w-[30]" src={details.picture} alt="" />
+          <div className="w-[70]">
+            <h3 className="text-4xl text-center my-4">{details.name}</h3>
+            <p>Description: {details.description}</p>
+            <p className="my-4">Bio: {details.bio}</p>
+            <p>Number Of Recipes: {details.number_of_recipes}</p>
+            <p className="my-4">Years of Experience: {details.experience}</p>
+            <div className="md:flex justify-between ">
+              <div>
+                <div className="flex items-center gap-2">
+                  <BiLike></BiLike>
+                  <p>{details.likes}</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <AiFillEye />
+                  <p>{details.views}</p>
+                </div>
+              </div>
+              <div>
+                <button
+                  className="btn btn-success"
+                  disabled={isFavorite}
+                  onClick={handleFavorite}
+                >
+                  {isFavorite ? "Added to favorites" : "Favorite chef"}{" "}
+                  <BiHeart className="text-red-700"></BiHeart>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-    );
+      </div>
+      <ToastContainer />
+    </div>
+  );
 };
 
 export default ShowDetails;
