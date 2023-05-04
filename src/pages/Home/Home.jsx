@@ -18,7 +18,7 @@ const Home = () => {
           <div>
             <img
               className="hidden md:block"
-              src="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGZvb2R8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+              src="https://plus.unsplash.com/premium_photo-1661721831979-086002e54958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGNoZWYlMjBjb29raW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
               alt=""
             />
           </div>
