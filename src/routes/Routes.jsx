@@ -10,6 +10,7 @@ import ShowDetails from "../pages/shared/ShowDetails";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Foods from "../pages/Home/Foods";
 import Recipies from "../pages/Home/Recipies";
+import PrivateRoute from "../Providers/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/categories/:id",
-        element: <ShowDetails />,
+        element: <PrivateRoute><ShowDetails></ShowDetails></PrivateRoute>
       },
 
       {

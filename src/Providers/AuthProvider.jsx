@@ -8,6 +8,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
 
@@ -15,36 +16,39 @@ export const AuthContext = createContext(null);
 const auth = getAuth(app);
 
 const AuthProviders = ({ children }) => {
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState(null);
 
   const [loading, setLoading] = useState(true);
 
   const createUser = (email, password) => {
-    setLoading(true);
+    // setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password)
   };
   const signIn = (email, password) => {
-    setLoading(true);
+    // setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
   const signInWithGoogle = () => {
-    setLoading(true);
+    // setLoading(true);
     const googleProvider = new GoogleAuthProvider();
     return signInWithPopup(auth, googleProvider);
   };
 
   const signWithGithub = () => {
-    setLoading(true);
+    // setLoading(true);
     const gitHubProvider = new GithubAuthProvider();
     return signInWithPopup(auth, gitHubProvider);
   }
   const logOut = () => {
-    setLoading(true);
+    // setLoading(true);
     return signOut(auth);
   };
 
-  const upDateProfile = (name, photoURL) => {
-    return upDateProfile(auth,{displayName: name, photoURL: photoURL})
+  const userProfile = (name, photoURL) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photoURL,
+    });
   }
   // Observe state change
   useEffect(() => {
@@ -67,7 +71,7 @@ const AuthProviders = ({ children }) => {
     logOut,
     signInWithGoogle,
     signWithGithub,
-    upDateProfile
+    userProfile,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

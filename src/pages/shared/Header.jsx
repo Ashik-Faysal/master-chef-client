@@ -7,6 +7,7 @@ const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const location = useLocation();
+  // console.log(user)
 
   const handleLogOut = () => {
     logOut()
@@ -52,10 +53,10 @@ const Header = () => {
           </Link>
         </div>
 
-        <div className="md:ml-4">
+        <div className="md:ml-4 flex gap-2">
           {user ? (
             <>
-              <img src={user.photoURL} alt="" />
+              <img className="w-12 h-12 rounded-full" src={user.photoURL} alt="" />
               <button
                 onClick={handleLogOut}
                 className="btn btn-warning ml-4 md:ml-0 mt-4 md:mt-0"

@@ -7,17 +7,17 @@ const Login = () => {
   const [error, setError] = useState(null);
 
   const { signIn, signInWithGoogle, signWithGithub ,upDateProfile} = useContext(AuthContext);
-  console.log(signInWithGoogle);
+  // console.log(signInWithGoogle);
     const navigate = useNavigate();
     const location = useLocation();
-    console.log("login page location", location);
+    // console.log("login page location", location);
     const from = location?.state?.from?.pathname || "/";
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    // console.log(email, password);
 
       if (password.length < 6) {
         setError("Password must be at least 6 characters long.");
@@ -27,12 +27,12 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         upDateProfile(email,photoURL)
-        console.log(loggedUser);
+        // console.log(loggedUser);
         form.reset();
         setError('')
         navigate(from);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => setError(error.message));
   };
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -89,7 +89,7 @@ const Login = () => {
                   width="20px"
                   height="20px"
                 />
-                {/* Sign in with Google */}
+               Google
               </button>
               <button
                 type="button"
@@ -103,7 +103,7 @@ const Login = () => {
                   width="20px"
                   height="20px"
                 />
-                {/* Sign in with Github */}
+                 Github
               </button>
             </div>
           </form>
