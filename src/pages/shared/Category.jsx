@@ -4,11 +4,15 @@ import { Link } from 'react-router-dom';
 import LazyLoad from "react-lazyload";
 
 const Category = ({ category }) => {
-    const {id, picture, name, experience, likes, number_of_recipes } = category;
-    return (
+    const {id, picture, name, experience, likes, number_of_recipes,recipeName } = category;
+  return (
+    <>
       <div className="card w-full bg-base-100 shadow-xl">
         <figure className="px-10 pt-10">
-           <LazyLoad> <img src={picture} alt="Shoes" className="rounded-xl" /></LazyLoad>
+          <LazyLoad>
+            {" "}
+            <img src={picture} alt="Shoes" className="rounded-xl" />
+          </LazyLoad>
         </figure>
         <div className="card-body items-center text-center">
           <h2 className="card-title">{name}</h2>
@@ -27,7 +31,8 @@ const Category = ({ category }) => {
           </div>
         </div>
       </div>
-    );
+    </>
+  );
 };
 
 export default Category;
