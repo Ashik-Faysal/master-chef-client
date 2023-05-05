@@ -10,6 +10,7 @@ const Category = ({ category }) => {
     name,
     experience,
     likes,
+    ratings,
     number_of_recipes,
     recipeName,
   } = category;
