@@ -15,8 +15,9 @@ const Foods = () => {
         Our Section
       </h1>
       <div className="grid md:grid-cols-4 my-8 shadow-2xl">
-              {foods.map((food) => <FoodCard key={food.id} food={food} />)
-              }
+        {foods.map((food) => (
+          <FoodCard key={food.id} food={food} />
+        ))}
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
@@ -6,12 +5,13 @@ import { AuthContext } from "../../Providers/AuthProvider";
 const Login = () => {
   const [error, setError] = useState(null);
 
-  const { signIn, signInWithGoogle, signWithGithub ,upDateProfile} = useContext(AuthContext);
+  const { signIn, signInWithGoogle, signWithGithub, upDateProfile } =
+    useContext(AuthContext);
   // console.log(signInWithGoogle);
-    const navigate = useNavigate();
-    const location = useLocation();
-    // console.log("login page location", location);
-    const from = location?.state?.from?.pathname || "/";
+  const navigate = useNavigate();
+  const location = useLocation();
+  // console.log("login page location", location);
+  const from = location?.state?.from?.pathname || "/";
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -19,17 +19,17 @@ const Login = () => {
     const password = form.password.value;
     // console.log(email, password);
 
-      if (password.length < 6) {
-        setError("Password must be at least 6 characters long.");
-        return;
-      }
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters long.");
+      return;
+    }
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        upDateProfile(email,photoURL)
+        upDateProfile(email, photoURL);
         // console.log(loggedUser);
         form.reset();
-        setError('')
+        setError("");
         navigate(from);
       })
       .catch((error) => setError(error.message));
@@ -89,7 +89,7 @@ const Login = () => {
                   width="20px"
                   height="20px"
                 />
-               Google
+                Google
               </button>
               <button
                 type="button"
@@ -103,7 +103,7 @@ const Login = () => {
                   width="20px"
                   height="20px"
                 />
-                 Github
+                Github
               </button>
             </div>
           </form>
