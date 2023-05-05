@@ -4,8 +4,8 @@ import { AiFillEye } from "react-icons/ai";
 import { useParams } from "react-router-dom";
 // import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import { Rating } from "@smastrom/react-rating";
-// import "@smastrom/react-rating/style.css";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 import Card from "./Card";
 
 const ShowDetails = () => {
@@ -51,7 +51,7 @@ const ShowDetails = () => {
                     <AiFillEye />
                     <p>{details.views}</p>
                   </div>
-                  {/* <div>
+                  <div>
                     <p className="flex gap-2">
                       <Rating
                         style={{ maxWidth: 100 }}
@@ -60,7 +60,7 @@ const ShowDetails = () => {
                       />
                       <span>{details.ratings}</span>
                     </p>
-                  </div> */}
+                  </div>
                 </div>
                 {/* <div>
                   <button
