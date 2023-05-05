@@ -22,7 +22,7 @@ const AuthProviders = ({ children }) => {
 
   const createUser = (email, password) => {
     // setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password)
+    return createUserWithEmailAndPassword(auth, email, password);
   };
   const signIn = (email, password) => {
     // setLoading(true);
@@ -38,7 +38,7 @@ const AuthProviders = ({ children }) => {
     // setLoading(true);
     const gitHubProvider = new GithubAuthProvider();
     return signInWithPopup(auth, gitHubProvider);
-  }
+  };
   const logOut = () => {
     // setLoading(true);
     return signOut(auth);
@@ -49,7 +49,7 @@ const AuthProviders = ({ children }) => {
       displayName: name,
       photoURL: photoURL,
     });
-  }
+  };
   // Observe state change
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -61,7 +61,6 @@ const AuthProviders = ({ children }) => {
       unsubscribe();
     };
   }, []);
-  
 
   const authInfo = {
     user,

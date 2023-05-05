@@ -6,7 +6,12 @@ const ErrorPage = () => {
   return (
     <section className="flex items-center h-screen p-16 bg-gray-100 text-gray-900">
       <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-40 h-40" viewBox="0 0 32 32" id="error">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-40 h-40"
+          viewBox="0 0 32 32"
+          id="error"
+        >
           <path
             fill="#ff9e68"
             d="M5.5 22c0 1.1-.9 2-2 2s-2-.9-2-2c0-.6.2-1.1.6-1.4.3-.4.8-.6 1.4-.6 1.1 0 2 .9 2 2z"

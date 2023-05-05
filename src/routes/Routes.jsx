@@ -35,7 +35,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/categories/:id",
-        element: <PrivateRoute><ShowDetails></ShowDetails></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <ShowDetails></ShowDetails>
+          </PrivateRoute>
+        ),
       },
 
       {

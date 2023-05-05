@@ -1,10 +1,18 @@
-import React from 'react';
+import React from "react";
 import { BiLike } from "react-icons/bi";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import LazyLoad from "react-lazyload";
 
 const Category = ({ category }) => {
-    const {id, picture, name, experience, likes, number_of_recipes,recipeName } = category;
+  const {
+    id,
+    picture,
+    name,
+    experience,
+    likes,
+    number_of_recipes,
+    recipeName,
+  } = category;
   return (
     <>
       <div className="card w-full bg-base-100 shadow-xl">
