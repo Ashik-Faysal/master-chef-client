@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import { BiHeart, BiLike } from "react-icons/bi";
 import { AiFillEye } from "react-icons/ai";
 import { useParams } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+// import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Rating } from "@smastrom/react-rating";
-import "@smastrom/react-rating/style.css";
+// import { Rating } from "@smastrom/react-rating";
+// import "@smastrom/react-rating/style.css";
+import Card from "./Card";
 
 const ShowDetails = () => {
   const { id } = useParams();
   const [details, setDetails] = useState([]);
-  const [isFavorite, setIsFavorite] = useState(false);
+  // const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     fetch(`https://master-chef-server-ashik-faysal.vercel.app/categories/${id}`)
@@ -19,10 +20,10 @@ const ShowDetails = () => {
       .catch((err) => console.error(err));
   }, []);
 
-  const handleFavorite = () => {
-    setIsFavorite(true);
-    toast.success("Chef added to favorites!");
-  };
+  // const handleFavorite = () => {
+  //   setIsFavorite(true);
+  //   toast.success("Chef added to favorites!");
+  // };
 
   return (
     <>
@@ -50,7 +51,7 @@ const ShowDetails = () => {
                     <AiFillEye />
                     <p>{details.views}</p>
                   </div>
-                  <div>
+                  {/* <div>
                     <p className="flex gap-2">
                       <Rating
                         style={{ maxWidth: 100 }}
@@ -59,9 +60,9 @@ const ShowDetails = () => {
                       />
                       <span>{details.ratings}</span>
                     </p>
-                  </div>
+                  </div> */}
                 </div>
-                <div>
+                {/* <div>
                   <button
                     className="btn btn-success"
                     disabled={isFavorite}
@@ -70,15 +71,15 @@ const ShowDetails = () => {
                     {isFavorite ? "Added to favorites" : "Favorite chef"}{" "}
                     <BiHeart className="text-red-700"></BiHeart>
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
         </div>
-        <ToastContainer />
+        {/* <ToastContainer /> */}
       </div>
-      <div className="grid md:grid-cols-3 p-2 border">
-        <div className="w-[20%] p-1">
+      <div className="p-2 border">
+        {/* <div className="w-[20%] p-1">
           <h4 className="text-stone-500 text-3xl">Recipe_Name:</h4>
           <p>{details.recipeName}</p>
         </div>
@@ -89,7 +90,8 @@ const ShowDetails = () => {
         <div className="w-[60%] p-4">
           <h4 className="text-stone-500 text-3xl">CookingMethods:</h4>
           <p>{details?.cookingMethods}</p>
-        </div>
+        </div> */}
+        <Card  details={details}/>
       </div>
     </>
   );
